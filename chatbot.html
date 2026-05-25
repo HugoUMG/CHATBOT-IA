@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recomendador de Carreras Universitarias</title>
+
+  <!-- Dialogflow Messenger para ES (versión clásica) -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      color: #1a202c;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 1.5rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.4);
+      max-width: 560px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(98deg, #1f1c47 0%, #2a2559 100%);
+      padding: 1.5rem 2rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      background: #6c5ce7;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .header-text h1 {
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .header-text p {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .status-badge {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+    }
+
+    .body-content {
+      padding: 2rem;
+    }
+
+    .body-content h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: #2d3748;
+    }
+
+    .body-content p {
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .body-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .body-content li {
+      padding: 0.5rem 0;
+      color: #4a5568;
+      font-size: 0.9rem;
+      display: flex;
+      gap: 8px;
+    }
+
+    .body-content li::before {
+      content: "✓";
+      color: #10b981;
+      font-weight: bold;
+    }
+
+    .footer-note {
+      background: #f7fafc;
+      padding: 1rem 2rem;
+      font-size: 0.8rem;
+      color: #4a5568;
+      border-top: 1px solid #edf2f7;
+      text-align: center;
+    }
+
+    .arrow-hint {
+      display: inline-block;
+      animation: bounce 1.5s infinite;
+      font-size: 1.2rem;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* Personalización del widget de Dialogflow Messenger ES */
+    df-messenger {
+      --df-messenger-bot-message: #f1f5f9;
+      --df-messenger-button-titlebar-color: #1f1c47;
+      --df-messenger-chat-background-color: #f9fafc;
+      --df-messenger-font-color: #1a202c;
+      --df-messenger-send-icon: #6c5ce7;
+      --df-messenger-user-message: #6c5ce7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="header">
+      <div class="avatar">🎓</div>
+      <div class="header-text">
+        <h1>Recomendador de Carreras</h1>
+        <p><span class="status-badge"></span> Asistente activo · Listo para orientarte</p>
+      </div>
+    </div>
+
+    <div class="body-content">
+      <h2>¿No sabes qué estudiar?</h2>
+      <p>
+        Soy un asistente vocacional impulsado por inteligencia artificial.
+        Te haré 10 preguntas cortas sobre tus intereses y, al final, te recomendaré
+        la carrera universitaria que mejor se adapta a tu perfil.
+      </p>
+
+      <h2>¿Cómo funciona?</h2>
+      <ul>
+        <li>Responde cada pregunta del 1 (no me gusta) al 5 (me encanta)</li>
+        <li>El cuestionario toma menos de 2 minutos</li>
+        <li>Te daré 3 opciones de carrera con su porcentaje de afinidad</li>
+      </ul>
+    </div>
+
+    <div class="footer-note">
+      Abre el chat en la esquina inferior derecha para comenzar
+      <span class="arrow-hint">↘</span>
+    </div>
+  </div>
+
+  <!-- Widget de Dialogflow Messenger para ES -->
+  <df-messenger
+    intent="WELCOME"
+    chat-title="Asistente Vocacional"
+    agent-id="390fdb7f-f2f8-4efd-93ff-c5e84f75e9e3"
+    language-code="es">
+  </df-messenger>
+
+</body>
+</html>
